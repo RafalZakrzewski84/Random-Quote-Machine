@@ -1,5 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import App from './src/App';
 
 const root = createRoot(document.getElementById('root'));
-root.render(<h1 id="quote-box">Hello, world</h1>);
+root.render(<App />);
