@@ -7,9 +7,28 @@
   background-color: grey;
 }
 
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 40px 0px 10px 0px;
+}
+
 #quote-box {
-  width: 50%;
-  padding: 25px;
-  border-radius: 3px;
+  width: 40%;
+  padding: 30px;
+  border-radius: 5px;
   background-color: beige;
+}
+
+#text {
+  font-size: 2rem;
+  text-align: justify;
+}
+
+#author {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  text-align: right;
+  font-style: italic;
 }

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { fetchQuote } from './utils/utils';
+import { fetchQuote, colors, getColor } from './utils/utils';
 import './App.scss';
 
 const App = () => {
   const [quoteData, setQuoteData] = useState({ quote: '', author: '' });
-  const [loading, setLoading] = useState(false);
+  const [color, setColor] = useState(getColor(colors));
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchQuote(setQuoteData);
   }, []);
 
   return (
-    <div className={'container'}>
-      <div id="quote-box">
-        <h1>Quotes App</h1>
-        <div id="text">{quoteData.quote}</div>
-        <div id="author">{quoteData.author}</div>
-        <div>
+    <div className={'container'} style={{ backgroundColor: `${color}` }}>
+      <div id="quote-box" style={{ color: `${color}` }}>
+        <p id="text">{quoteData.quote}</p>
+        <p id="author">- {quoteData.author}</p>
+        <div className={'flex'}>
           <div>
             <a>Twitter</a>
             <a
@@ -27,7 +27,14 @@ const App = () => {
               Tweet
             </a>
           </div>
-          <button id="new-quote" onClick={() => fetchQuote(setQuoteData)}>
+          <button
+            disabled={loading && 1 > 3}
+            id="new-quote"
+            onClick={() => {
+              fetchQuote(setQuoteData);
+              setColor(getColor(colors));
+            }}
+          >
             New Quote
           </button>
         </div>
